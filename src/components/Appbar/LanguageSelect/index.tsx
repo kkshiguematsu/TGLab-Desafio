@@ -1,4 +1,11 @@
-import { Box, MenuItem, Select, type SelectChangeEvent } from '@mui/material';
+import {
+  Box,
+  MenuItem,
+  Select,
+  useMediaQuery,
+  useTheme,
+  type SelectChangeEvent,
+} from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { FlagIcon } from './FlagIcon';
 
@@ -14,6 +21,8 @@ const supportedLanguages = [
 
 export const LanguageSelect = () => {
   const { i18n } = useTranslation();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleChangeLanguage = (event: SelectChangeEvent) => {
     i18n.changeLanguage(event.target.value);
@@ -31,7 +40,7 @@ export const LanguageSelect = () => {
         <MenuItem key={lang.code} value={lang.code}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <FlagIcon flag={lang.flag} />
-            <span>{lang.label}</span>
+            {isMobile ? null : <span>{lang.label}</span>}
           </Box>
         </MenuItem>
       ))}

@@ -5,7 +5,7 @@ import esTranslation from './es/translation.json';
 import enTranslation from './en/translation.json';
 import ptTranslation from './pt/translation.json';
 
-export default i18n
+i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
@@ -26,3 +26,5 @@ export default i18n
       escapeValue: false,
     },
   });
+
+export default i18n;
