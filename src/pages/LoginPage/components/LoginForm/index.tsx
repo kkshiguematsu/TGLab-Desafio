@@ -5,6 +5,7 @@ import { Button, Grid, TextField, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { getLoginSchema } from '../../../../validations/loginSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { TitleHeader } from '../../../../components/TitleHeader';
 
 type LoginFormInputs = {
   email: string;
@@ -45,9 +46,7 @@ export const LoginForm = ({ onOpenRegister }: LoginFormProps) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={2}>
         <Grid size={12}>
-          <Typography variant="h4" component="h2" textAlign="center">
-            Login
-          </Typography>
+          <TitleHeader text="Login" />
         </Grid>
 
         <Grid size={12}>

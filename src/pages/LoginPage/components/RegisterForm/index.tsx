@@ -5,6 +5,7 @@ import { Button, Grid, TextField, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getRegisterSchema } from '../../../../validations/registerSchema';
+import { TitleHeader } from '../../../../components/TitleHeader';
 
 type RegisterFormInputs = {
   name: string;
@@ -45,9 +46,7 @@ export const RegisterForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={2}>
         <Grid size={12}>
-          <Typography variant="h4" component="h2" textAlign="center">
-            Cadastrar
-          </Typography>
+          <TitleHeader text="Cadastrar" />
         </Grid>
 
         <Grid container spacing={2}>
