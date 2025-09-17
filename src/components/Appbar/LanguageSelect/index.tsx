@@ -23,7 +23,7 @@ export const LanguageSelect = () => {
     <Select
       labelId="select-label"
       id="language-select"
-      value={i18n.language}
+      value={i18n.language || 'pt'}
       label="Language"
       onChange={handleChangeLanguage}
     >

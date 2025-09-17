@@ -1,0 +1,7 @@
+{
+  "login_page": {
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "login_button": "Iniciar sesión"
+  }
+}

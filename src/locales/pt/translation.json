@@ -1,0 +1,9 @@
+{
+  "login_page": {
+    "welcome": "Bem-vindo ao TGLab Desafio",
+    "username": "Nome de usuário",
+    "password": "Senha",
+    "login_button": "Entrar",
+    "language_select": "Selecionar idioma"
+  }
+}
