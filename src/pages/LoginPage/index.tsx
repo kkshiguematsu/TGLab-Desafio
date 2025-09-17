@@ -1,6 +1,6 @@
 import { Page } from '../../components/Page';
 import heroImage from '../../../public/assets/hero_static.png';
-import { GlassPaper } from './components/GlassPaper';
+import { GlassPaper } from '../../components/GlassPaper';
 import { LoginForm } from './components/LoginForm';
 import { Portal } from '@mui/material';
 import { RegisterPopup } from './components/RegisterPopup';

@@ -17,3 +17,8 @@ export type AuthResponseType = {
   id: string;
   name: string;
 };
+
+export type RegisterResponseType = {
+  id: string;
+  name: string;
+};

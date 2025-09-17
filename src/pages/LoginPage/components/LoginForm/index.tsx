@@ -3,7 +3,7 @@ import { useAuth } from '../../../../context/AuthContext';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { getLoginSchema } from '../../../../validations/loginSchema';
+import { getLoginSchema } from '../../../../validations/auth/loginSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TitleHeader } from '../../../../components/TitleHeader';
 

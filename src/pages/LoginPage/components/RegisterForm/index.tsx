@@ -1,10 +1,9 @@
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../../context/AuthContext';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { getRegisterSchema } from '../../../../validations/registerSchema';
+import { getRegisterSchema } from '../../../../validations/auth/registerSchema';
 import { TitleHeader } from '../../../../components/TitleHeader';
 
 type RegisterFormInputs = {
@@ -14,10 +13,13 @@ type RegisterFormInputs = {
   confirmPassword: string;
 };
 
-export const RegisterForm = () => {
+interface RegisterFormProps {
+  onClose: () => void;
+}
+
+export const RegisterForm = ({ onClose }: RegisterFormProps) => {
   const { t } = useTranslation();
   const { register, isLoading, error: authError } = useAuth();
-  const navigate = useNavigate();
 
   const {
     control,
@@ -36,7 +38,7 @@ export const RegisterForm = () => {
   const onSubmit = async (data: RegisterFormInputs) => {
     try {
       await register(data);
-      navigate('/bet');
+      onClose();
     } catch (err) {
       console.error('Falha no registro a partir do componente');
     }

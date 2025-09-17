@@ -1,4 +1,7 @@
 {
+  "coin": {
+    "type": "R$"
+  },
   "validation": {
     "name_required": "O nome é obrigatório",
     "email_invalid": "Endereço de e-mail inválido",
@@ -7,6 +10,16 @@
     "password_min": "A senha deve ter no mínimo {{min}} caracteres",
     "confirm_password_required": "A confirmação de senha é obrigatória",
     "confirm_password_min": "A confirmação de senha deve ter no mínimo {{min}} caracteres",
-    "confirm_password_match": "A confirmação de senha deve corresponder à senha"
+    "confirm_password_match": "A confirmação de senha deve corresponder à senha",
+    "bet_required": "O valor da aposta é obrigatório",
+    "bet_positive": "O valor da aposta deve ser um número positivo",
+    "bet_min": "O valor mínimo da aposta é de R$ 1,00"
+  },
+  "betPage": {
+    "title": "Faça sua aposta !",
+    "label": "Valor",
+    "button": "Apostar",
+    "betWinLabel": "Parabéns! Você ganhou ",
+    "coinBalance": "Saldo: "
   }
 }

@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import type {
-  AuthResponseType,
-  LoginCredentialsType,
-  RegisterCredentialsType,
-} from '../types/auth';
-import { api } from '../services/api';
+import type { LoginCredentialsType, RegisterCredentialsType } from '../types/auth';
+import { loginService, registerService } from '../services/authService';
+
+import { setBalance } from '../store/user/userBalance';
+import type { AppDispatch } from '../store/store';
+import { useDispatch } from 'react-redux';
 
 interface AuthContextType {
   user: string | null;
@@ -23,6 +23,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
     const storedToken = localStorage.getItem('authToken');
     if (storedToken) {
@@ -34,8 +36,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await api.post<AuthResponseType>('/login', credentials);
-      const token = response.data.accessToken;
+      const response = await loginService(credentials);
+      const token = response.accessToken;
+
+      dispatch(setBalance(response.balance));
       setToken(token);
 
       localStorage.setItem('authToken', token);
@@ -50,10 +54,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await api.post('/register', credentials);
-      const { token } = response.data;
-      setToken(token);
-      localStorage.setItem('authToken', token);
+      await registerService(credentials);
     } catch (error) {
       setError('Registration failed');
     } finally {

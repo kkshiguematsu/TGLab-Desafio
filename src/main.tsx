@@ -4,17 +4,21 @@ import { Router } from './Router';
 import { AuthProvider } from './context/AuthContext';
 import { CustomAppBar } from './components/Appbar';
 import { ThemeProvider } from './context/ThemeContext';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 import './locales/i18n';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AuthProvider>
-      <ThemeProvider>
-        <CustomAppBar />
-        <Router />
-      </ThemeProvider>
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <ThemeProvider>
+          <CustomAppBar />
+          <Router />
+        </ThemeProvider>
+      </AuthProvider>
+    </Provider>
   </StrictMode>,
 );

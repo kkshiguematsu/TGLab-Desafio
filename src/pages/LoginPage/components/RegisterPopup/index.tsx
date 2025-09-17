@@ -11,7 +11,7 @@ export const RegisterPopup = ({ open, onClose }: RegisterPopupProps) => {
   return (
     <Modal open={open} onClose={onClose}>
       <ModalBoxStyled>
-        <RegisterForm />
+        <RegisterForm onClose={onClose} />
       </ModalBoxStyled>
     </Modal>
   );
