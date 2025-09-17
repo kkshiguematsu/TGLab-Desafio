@@ -1,23 +1,41 @@
-import { Box, AppBar, Toolbar, IconButton, Typography, Button } from '@mui/material';
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Button,
+  Switch,
+  FormGroup,
+  FormControlLabel,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '../../context/ThemeContext';
+import { AppBarStyled, ToolbarStyled } from './styled';
+import { LanguageSelect } from './LanguageSelect';
 
 export const CustomAppBar = () => {
-  const { mode, setMode } = useTheme();
+  const { mode, toggleTheme } = useTheme();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: '#24A69C' }}>
-        <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+      <AppBarStyled>
+        <ToolbarStyled>
+          <IconButton edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            TG Lab
           </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
+          <FormGroup>
+            <FormControlLabel
+              control={<Switch checked={mode === 'dark'} onChange={toggleTheme} />}
+              label={mode === 'dark' ? 'Dark Mode' : 'Light Mode'}
+            />
+          </FormGroup>
+          <LanguageSelect />
+        </ToolbarStyled>
+      </AppBarStyled>
     </Box>
   );
 };
