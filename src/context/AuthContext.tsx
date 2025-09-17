@@ -1,5 +1,9 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import type { LoginCredentialsType, RegisterCredentialsType } from '../types/auth';
+import type {
+  AuthResponseType,
+  LoginCredentialsType,
+  RegisterCredentialsType,
+} from '../types/auth';
 import { api } from '../services/api';
 
 interface AuthContextType {
@@ -16,7 +20,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -30,9 +34,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await api.post('/auth/login', credentials);
-      const { token } = response.data;
+      const response = await api.post<AuthResponseType>('/login', credentials);
+      const token = response.data.accessToken;
       setToken(token);
+
       localStorage.setItem('authToken', token);
     } catch (error) {
       setError('Login failed');
@@ -45,7 +50,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await api.post('/auth/register', credentials);
+      const response = await api.post('/register', credentials);
       const { token } = response.data;
       setToken(token);
       localStorage.setItem('authToken', token);
@@ -63,7 +68,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const isAuthenticated = token !== null;
 
-  return <AuthContext.Provider value={{ user: token, login, logout, register, isLoading, error, isAuthenticated }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{ user: token, login, logout, register, isLoading, error, isAuthenticated }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export function useAuth() {

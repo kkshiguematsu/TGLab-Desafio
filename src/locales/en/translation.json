@@ -1,7 +1,11 @@
 {
-  "login_page": {
-    "username": "Username",
-    "password": "Password",
-    "login_button": "Login"
+  "validation": {
+    "email_invalid": "Invalid email address",
+    "email_required": "Email is required",
+    "password_required": "Password is required",
+    "password_min": "Password must be at least {{count}} characters",
+    "confirm_password_required": "Confirm password is required",
+    "confirm_password_min": "Confirm password must be at least {{min}} characters",
+    "confirm_password_match": "Confirm password must match password"
   }
 }

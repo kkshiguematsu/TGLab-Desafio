@@ -1,9 +1,12 @@
 {
-  "login_page": {
-    "welcome": "Bem-vindo ao TGLab Desafio",
-    "username": "Nome de usuário",
-    "password": "Senha",
-    "login_button": "Entrar",
-    "language_select": "Selecionar idioma"
+  "validation": {
+    "name_required": "O nome é obrigatório",
+    "email_invalid": "Endereço de e-mail inválido",
+    "email_required": "O e-mail é obrigatório",
+    "password_required": "A senha é obrigatória",
+    "password_min": "A senha deve ter no mínimo {{min}} caracteres",
+    "confirm_password_required": "A confirmação de senha é obrigatória",
+    "confirm_password_min": "A confirmação de senha deve ter no mínimo {{min}} caracteres",
+    "confirm_password_match": "A confirmação de senha deve corresponder à senha"
   }
 }

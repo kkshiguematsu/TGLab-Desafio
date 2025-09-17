@@ -1,0 +1,133 @@
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../../context/AuthContext';
+import { useForm, Controller } from 'react-hook-form';
+import { Button, Grid, TextField, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { getRegisterSchema } from '../../../../validations/registerSchema';
+
+type RegisterFormInputs = {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
+export const RegisterForm = () => {
+  const { t } = useTranslation();
+  const { register, isLoading, error: authError } = useAuth();
+  const navigate = useNavigate();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormInputs>({
+    resolver: yupResolver(getRegisterSchema(t)),
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+  });
+
+  const onSubmit = async (data: RegisterFormInputs) => {
+    try {
+      await register(data);
+      navigate('/bet');
+    } catch (err) {
+      console.error('Falha no registro a partir do componente');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Grid container spacing={2}>
+        <Grid size={12}>
+          <Typography variant="h4" component="h2" textAlign="center">
+            Cadastrar
+          </Typography>
+        </Grid>
+
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Controller
+              name="name"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Nome"
+                  variant="outlined"
+                  fullWidth
+                  error={!!errors.name}
+                  helperText={errors.name?.message}
+                />
+              )}
+            />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Controller
+              name="email"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="E-mail"
+                  variant="outlined"
+                  fullWidth
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                />
+              )}
+            />
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Controller
+              name="password"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Senha"
+                  type="password"
+                  variant="outlined"
+                  fullWidth
+                  error={!!errors.password}
+                  helperText={errors.password?.message}
+                />
+              )}
+            />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Controller
+              name="confirmPassword"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Confirmar Senha"
+                  type="password"
+                  variant="outlined"
+                  fullWidth
+                  error={!!errors.confirmPassword}
+                  helperText={errors.confirmPassword?.message}
+                />
+              )}
+            />
+          </Grid>
+        </Grid>
+
+        <Grid container size={12}>
+          <Button type="submit" variant="contained" fullWidth disabled={isLoading}>
+            Cadastrar
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
+  );
+};
