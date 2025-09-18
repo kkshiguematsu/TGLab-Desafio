@@ -1,11 +1,94 @@
 {
+  "coin": {
+    "type": "USD",
+    "typeFormatter": "$"
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirm": "Confirm Password",
+    "buttonLogin": "Login",
+    "buttonRegister": "Register"
+  },
   "validation": {
+    "name_required": "Name is required",
     "email_invalid": "Invalid email address",
     "email_required": "Email is required",
     "password_required": "Password is required",
-    "password_min": "Password must be at least {{count}} characters",
-    "confirm_password_required": "Confirm password is required",
-    "confirm_password_min": "Confirm password must be at least {{min}} characters",
-    "confirm_password_match": "Confirm password must match password"
+    "password_min": "Password must be at least {{min}} characters",
+    "confirm_password_required": "Password confirmation is required",
+    "confirm_password_min": "Password confirmation must be at least {{min}} characters",
+    "confirm_password_match": "Passwords must match",
+    "bet_required": "Bet amount is required",
+    "bet_positive": "Bet amount must be a positive number",
+    "bet_min": "The minimum bet amount is $1.00",
+    "bet_insufficient_balance": "Insufficient balance to place this bet"
+  },
+  "betPage": {
+    "title": "Place your bet!",
+    "label": "Amount",
+    "button": "Place Bet",
+    "betWinLabel": "Congratulations! You won ",
+    "coinBalance": "Balance: ",
+    "betSuccess": "Bet placed successfully!"
+  },
+  "drawerItem": {
+    "drawerBet": "Place Bet",
+    "drawerMyBets": "My Bets",
+    "drawerTransactions": "Transactions"
+  },
+  "myBetsPage": {
+    "title": "My Bets",
+    "tableColumns": {
+      "value": "Amount",
+      "date": "Date/Time",
+      "status": "Status",
+      "reward": "Prize",
+      "actionLabel": "Cancel Bet",
+      "actions": "Actions"
+    },
+    "cancelModal": {
+      "title": "Cancel Bet",
+      "body": "Are you sure you want to cancel this bet?",
+      "backButton": "Go Back",
+      "cancelButton": "Cancel Bet"
+    },
+    "filter": {
+      "filterId": "Filter by ID",
+      "filterStatus": {
+        "label": "Filter by Status",
+        "allItem": "All",
+        "winItem": "Won",
+        "lostItem": "Lost",
+        "canceledItem": "Canceled"
+      }
+    }
+  },
+  "myTransactionssPage": {
+    "title": "My Transactions",
+    "tableColumns": {
+      "value": "Amount",
+      "date": "Date/Time",
+      "type": "Type"
+    },
+    "filter": {
+      "filterId": "Filter by ID",
+      "filterType": {
+        "label": "Filter by Type",
+        "allItem": "All",
+        "betItem": "Bet",
+        "winItem": "Win",
+        "cancelItem": "Canceled"
+      }
+    }
+  },
+  "errors": {
+    "loginError": "Error logging in!",
+    "registerError": "Error during registration!",
+    "betError": "Error placing bet!",
+    "cancelError": "Error during cancellation!",
+    "getMyBetsError": "Error requesting bets!",
+    "getMyTransactionsError": "Error requesting transactions!"
   }
 }

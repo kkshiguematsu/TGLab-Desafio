@@ -1,7 +1,94 @@
 {
-  "login_page": {
-    "username": "Nombre de usuario",
+  "coin": {
+    "type": "EUR",
+    "typeFormatter": "€"
+  },
+  "form": {
+    "name": "Nombre",
+    "email": "Correo Electrónico",
     "password": "Contraseña",
-    "login_button": "Iniciar sesión"
+    "passwordConfirm": "Confirmar Contraseña",
+    "buttonLogin": "Iniciar Sesión",
+    "buttonRegister": "Registrarse"
+  },
+  "validation": {
+    "name_required": "El nombre es obligatorio",
+    "email_invalid": "Dirección de correo electrónico inválida",
+    "email_required": "El correo electrónico es obligatorio",
+    "password_required": "La contraseña es obligatoria",
+    "password_min": "La contraseña debe tener al menos {{min}} caracteres",
+    "confirm_password_required": "La confirmación de la contraseña es obligatoria",
+    "confirm_password_min": "La confirmación de la contraseña debe tener al menos {{min}} caracteres",
+    "confirm_password_match": "Las contraseñas deben coincidir",
+    "bet_required": "El monto de la apuesta es obligatorio",
+    "bet_positive": "El monto de la apuesta debe ser un número positivo",
+    "bet_min": "El monto mínimo de la apuesta es de 1,00 €",
+    "bet_insufficient_balance": "Saldo insuficiente para realizar esta apuesta"
+  },
+  "betPage": {
+    "title": "¡Haga su apuesta!",
+    "label": "Monto",
+    "button": "Apostar",
+    "betWinLabel": "¡Felicidades! Ha ganado ",
+    "coinBalance": "Saldo: ",
+    "betSuccess": "¡Apuesta realizada con éxito!"
+  },
+  "drawerItem": {
+    "drawerBet": "Apostar",
+    "drawerMyBets": "Mis Apuestas",
+    "drawerTransactions": "Transacciones"
+  },
+  "myBetsPage": {
+    "title": "Mis Apuestas",
+    "tableColumns": {
+      "value": "Monto",
+      "date": "Fecha/Hora",
+      "status": "Estado",
+      "reward": "Premio",
+      "actionLabel": "Cancelar Apuesta",
+      "actions": "Acciones"
+    },
+    "cancelModal": {
+      "title": "Cancelar Apuesta",
+      "body": "¿Está seguro de que desea cancelar esta apuesta?",
+      "backButton": "Volver",
+      "cancelButton": "Cancelar Apuesta"
+    },
+    "filter": {
+      "filterId": "Filtrar por ID",
+      "filterStatus": {
+        "label": "Filtrar por Estado",
+        "allItem": "Todos",
+        "winItem": "Ganada",
+        "lostItem": "Perdida",
+        "canceledItem": "Cancelada"
+      }
+    }
+  },
+  "myTransactionssPage": {
+    "title": "Mis Transacciones",
+    "tableColumns": {
+      "value": "Monto",
+      "date": "Fecha/Hora",
+      "type": "Tipo"
+    },
+    "filter": {
+      "filterId": "Filtrar por ID",
+      "filterType": {
+        "label": "Filtrar por Tipo",
+        "allItem": "Todos",
+        "betItem": "Apostado",
+        "winItem": "Ganado",
+        "cancelItem": "Cancelado"
+      }
+    }
+  },
+  "errors": {
+    "loginError": "¡Error al iniciar sesión!",
+    "registerError": "¡Error durante el registro!",
+    "betError": "¡Error al realizar la apuesta!",
+    "cancelError": "¡Error durante la cancelación!",
+    "getMyBetsError": "¡Error al solicitar apuestas!",
+    "getMyTransactionsError": "¡Error al solicitar transacciones!"
   }
 }
