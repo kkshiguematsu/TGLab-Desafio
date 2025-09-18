@@ -8,7 +8,6 @@ interface MainBoxProps {
 
 export const MainBox = styled('div')<MainBoxProps>(
   ({ theme, backgroundImage, alignItems, justifyContent }) => ({
-    height: '100vh',
     minHeight: '100vh',
     display: 'flex',
     alignItems: alignItems ? alignItems : 'start',
