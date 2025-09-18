@@ -27,7 +27,7 @@ export const CancelBetModal = ({ open, betIdToCancel, onClose }: CancelBetModalP
 
       onClose();
 
-      dispatch(setBalance(response.balance));
+      // dispatch(setBalance(response.balance));
 
       mutate((key) => typeof key === 'string' && key.startsWith('/my-bets'));
       mutate('/my-transactions');

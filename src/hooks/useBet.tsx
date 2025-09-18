@@ -18,7 +18,7 @@ export const useBet = () => {
       alert(`${t('betPage.betWinLabel')} ${t('coin.type')} ${response.winAmount.toFixed(2)}`);
     }
 
-    dispatch(setBalance(response.balance));
+    // dispatch(setBalance(response.balance));
   };
 
   return {

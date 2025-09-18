@@ -5,6 +5,7 @@ import { loginService, registerService } from '../services/authService';
 import { setBalance } from '../store/user/userBalance';
 import type { AppDispatch } from '../store/store';
 import { useDispatch } from 'react-redux';
+import type { WebSocketBalanceUpdateType } from '../types/websocket';
 
 interface AuthContextType {
   user: string | null;
@@ -25,6 +26,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const dispatch = useDispatch<AppDispatch>();
 
+  const createWebSocketConnection = (token: string) => {
+    console.log(`Creating webSocket connection with ${token}`);
+
+    const ws = new WebSocket('ws://localhost:9999');
+
+    ws.onopen = () => {
+      const authMessageWebSocket = { type: 'auth', token: token };
+      console.log(authMessageWebSocket);
+
+      ws.send(JSON.stringify(authMessageWebSocket));
+    };
+
+    ws.onmessage = (event) => {
+      const data: WebSocketBalanceUpdateType = JSON.parse(event.data);
+      console.log('Novo saldo recebido:', data);
+      if (data.type === 'balance_update') {
+        console.log('Novo saldo recebido:', data.payload.balance);
+
+        dispatch(setBalance(data.payload.balance));
+      }
+    };
+  };
+
   useEffect(() => {
     const storedToken = localStorage.getItem('authToken');
     if (storedToken) {
@@ -39,8 +63,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const response = await loginService(credentials);
       const token = response.accessToken;
 
-      dispatch(setBalance(response.balance));
+      // dispatch(setBalance(response.balance));
       setToken(token);
+      createWebSocketConnection(token);
 
       localStorage.setItem('authToken', token);
     } catch (error: any) {
@@ -86,7 +111,4 @@ export function useAuth() {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-}
-function useTranslation(): { t: any } {
-  throw new Error('Function not implemented.');
 }
