@@ -59,7 +59,7 @@ export const RegisterForm = ({ onClose }: RegisterFormProps) => {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label="Nome"
+                  label={t('form.name')}
                   variant="outlined"
                   fullWidth
                   error={!!errors.name}
@@ -75,7 +75,7 @@ export const RegisterForm = ({ onClose }: RegisterFormProps) => {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label="E-mail"
+                  label={t('form.email')}
                   variant="outlined"
                   fullWidth
                   error={!!errors.email}
@@ -94,7 +94,7 @@ export const RegisterForm = ({ onClose }: RegisterFormProps) => {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label="Senha"
+                  label={t('form.password')}
                   type="password"
                   variant="outlined"
                   fullWidth
@@ -111,7 +111,7 @@ export const RegisterForm = ({ onClose }: RegisterFormProps) => {
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label="Confirmar Senha"
+                  label={t('form.passwordConfirm')}
                   type="password"
                   variant="outlined"
                   fullWidth
@@ -125,7 +125,7 @@ export const RegisterForm = ({ onClose }: RegisterFormProps) => {
 
         <Grid container size={12}>
           <Button type="submit" variant="contained" fullWidth disabled={isLoading}>
-            Cadastrar
+            {t('form.buttonRegister')}
           </Button>
         </Grid>
       </Grid>

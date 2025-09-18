@@ -56,7 +56,7 @@ export const LoginForm = ({ onOpenRegister }: LoginFormProps) => {
             render={({ field }) => (
               <TextField
                 {...field}
-                label="E-mail"
+                label={t('form.email')}
                 variant="outlined"
                 fullWidth
                 error={!!errors.email}
@@ -73,7 +73,7 @@ export const LoginForm = ({ onOpenRegister }: LoginFormProps) => {
             render={({ field }) => (
               <TextField
                 {...field}
-                label="Senha"
+                label={t('form.password')}
                 type="password"
                 variant="outlined"
                 fullWidth
@@ -93,7 +93,7 @@ export const LoginForm = ({ onOpenRegister }: LoginFormProps) => {
               disabled={isLoading}
               loading={isLoading}
             >
-              Login
+              {t('form.buttonLogin')}
             </Button>
             {authError && (
               <Typography color="error" sx={{ mt: 1 }}>
@@ -103,7 +103,7 @@ export const LoginForm = ({ onOpenRegister }: LoginFormProps) => {
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }} textAlign="left">
             <Button variant="outlined" fullWidth onClick={onOpenRegister} disabled={isLoading}>
-              Cadastrar
+              {t('form.buttonRegister')}
             </Button>
           </Grid>
         </Grid>
