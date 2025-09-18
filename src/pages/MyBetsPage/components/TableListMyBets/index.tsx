@@ -3,11 +3,11 @@ import { Box, Portal } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useMemo, useState } from 'react';
 import { useMyBets } from '../../../../hooks/useMyBets';
-import { formatInTimeZone } from 'date-fns-tz';
 import { DeleteIconStyled } from '../DeleteIcon/styled';
 import { CancelBetModal } from '../CancelBetModal';
 import { TableListMyBetsFilters } from './TableListMyBetsFilters';
 import { dateFormatter } from '../../../../utils/dateFormatter';
+import toast from 'react-hot-toast';
 
 export const TableListMyBets = () => {
   const [openCancelModal, setOpenCancelModal] = useState(false);
@@ -61,6 +61,8 @@ export const TableListMyBets = () => {
     ],
     [t],
   );
+
+  if (error) toast.error(t('errors.getMyBetsError'));
 
   // @TODO create loading skeletion
   // @TODO create empty list feedback

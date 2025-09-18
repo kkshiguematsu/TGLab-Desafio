@@ -5,13 +5,13 @@ import { useMemo } from 'react';
 import { dateFormatter } from '../../../../utils/dateFormatter';
 import { useMyTransactions } from '../../../../hooks/useMyTransactions';
 import { TableListMyTransactionsFilters } from '../TableListMyTransactionsFilters';
+import toast from 'react-hot-toast';
 
 export const TableListMyTransactions = () => {
   const { t } = useTranslation();
   const {
     transactions,
     totalTransactions,
-    currentPage,
     limit,
     isLoading,
     error,
@@ -37,6 +37,8 @@ export const TableListMyTransactions = () => {
     ],
     [t],
   );
+
+  if (error) toast.error(t('errors.getMyTransactionsError'));
 
   // @TODO create loading skeletion
   // @TODO create empty list feedback

@@ -1,14 +1,13 @@
 import { Button, Grid } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { ButtonBetActionStyled, InputNumberStyled } from './styled';
-import { CoinType } from '../CoinType';
 import { getBetSchema } from '../../../../validations/bet/betSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
 import { useBet } from '../../../../hooks/useBet';
-import { DisplayTextStyled } from '../CoinType/styled';
 import { useSelector } from 'react-redux';
 import { selectBalance } from '../../../../store/user/userBalance';
+import toast from 'react-hot-toast';
 
 type BetFormInputs = {
   amount: number;
@@ -38,10 +37,13 @@ export const BetForm = () => {
   const onSubmit = async (data: BetFormInputs) => {
     try {
       await betTrigger(data.amount);
+      toast.success(t('betPage.betSuccess'));
     } catch (err) {
       console.error('Falha no login a partir do componente');
     }
   };
+
+  if (error) toast.error('errors.betError');
 
   const incrementAmount = () => {
     const currentValue = getValues('amount') || 0;

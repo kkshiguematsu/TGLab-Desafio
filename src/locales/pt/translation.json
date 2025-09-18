@@ -1,6 +1,15 @@
 {
   "coin": {
-    "type": "R$"
+    "type": "BRL",
+    "typeFormatter": "R$"
+  },
+  "form": {
+    "name": "Nome",
+    "email": "Email",
+    "password": "Senha",
+    "passwordConfirm": "Confirmar Senha",
+    "buttonLogin": "Login",
+    "buttonRegister": "Cadastrar"
   },
   "validation": {
     "name_required": "O nome é obrigatório",
@@ -13,14 +22,16 @@
     "confirm_password_match": "A confirmação de senha deve corresponder à senha",
     "bet_required": "O valor da aposta é obrigatório",
     "bet_positive": "O valor da aposta deve ser um número positivo",
-    "bet_min": "O valor mínimo da aposta é de R$ 1,00"
+    "bet_min": "O valor mínimo da aposta é de R$ 1,00",
+    "bet_insufficient_balance": "Saldo insuficiente para realizar esta aposta"
   },
   "betPage": {
     "title": "Faça sua aposta !",
     "label": "Valor",
     "button": "Apostar",
     "betWinLabel": "Parabéns! Você ganhou ",
-    "coinBalance": "Saldo: "
+    "coinBalance": "Saldo: ",
+    "betSuccess": "Aposta realizada!"
   },
   "drawerItem": {
     "drawerBet": "Apostar",
@@ -71,5 +82,13 @@
         "cancelItem": "Cancelada"
       }
     }
+  },
+  "errors": {
+    "loginError": "Erro ao realizar login!",
+    "registerError": "Erro ao realizar registro!",
+    "betError": "Erro ao realizar aposta!",
+    "cancelError": "Erro ao realizar cancelamento!",
+    "getMyBetsError": "Erro ao requistar apostas!",
+    "getMyTransactionsError": "Erro ao requistar transações!"
   }
 }

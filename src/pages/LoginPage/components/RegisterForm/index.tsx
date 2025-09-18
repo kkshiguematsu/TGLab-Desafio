@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getRegisterSchema } from '../../../../validations/auth/registerSchema';
 import { TitleHeader } from '../../../../components/TitleHeader';
+import toast from 'react-hot-toast';
 
 type RegisterFormInputs = {
   name: string;
@@ -41,6 +42,7 @@ export const RegisterForm = ({ onClose }: RegisterFormProps) => {
       onClose();
     } catch (err) {
       console.error('Falha no registro a partir do componente');
+      toast.error(t('errors.registerError'));
     }
   };
 

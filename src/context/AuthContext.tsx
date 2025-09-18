@@ -5,7 +5,6 @@ import { loginService, registerService } from '../services/authService';
 import { setBalance } from '../store/user/userBalance';
 import type { AppDispatch } from '../store/store';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
   user: string | null;
@@ -57,8 +56,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setError(null);
     try {
       await registerService(credentials);
-    } catch (error) {
+    } catch (error: any) {
       setError('Registration failed');
+      throw new Error(error);
     } finally {
       setIsLoading(false);
     }
@@ -86,4 +86,7 @@ export function useAuth() {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
+}
+function useTranslation(): { t: any } {
+  throw new Error('Function not implemented.');
 }

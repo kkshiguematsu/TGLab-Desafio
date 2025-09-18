@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { getLoginSchema } from '../../../../validations/auth/loginSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TitleHeader } from '../../../../components/TitleHeader';
+import toast from 'react-hot-toast';
 
 type LoginFormInputs = {
   email: string;
@@ -39,6 +40,7 @@ export const LoginForm = ({ onOpenRegister }: LoginFormProps) => {
       navigate('/bet');
     } catch (err) {
       console.error(err);
+      toast.error(t('errors.loginError'));
     }
   };
 
