@@ -1,6 +1,6 @@
 import { Button, Grid } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
-import { InputNumberStyled } from './styled';
+import { ButtonBetActionStyled, InputNumberStyled } from './styled';
 import { CoinType } from '../CoinType';
 import { getBetSchema } from '../../../../validations/bet/betSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -23,6 +23,8 @@ export const BetForm = () => {
     control,
     handleSubmit,
     formState: { errors },
+    setValue,
+    getValues,
   } = useForm<BetFormInputs>({
     resolver: yupResolver(getBetSchema(t)),
     defaultValues: {
@@ -41,13 +43,29 @@ export const BetForm = () => {
     }
   };
 
+  const incrementAmount = () => {
+    const currentValue = getValues('amount') || 0;
+    const newValue = currentValue + 1;
+    setValue('amount', newValue);
+  };
+
+  const decrementAmount = () => {
+    const currentValue = getValues('amount') || 0;
+    let newValue = currentValue - 1;
+    newValue = newValue === 0 ? 1 : newValue;
+
+    setValue('amount', newValue);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={2}>
         <Grid size={{ xs: 3, sm: 2 }}>
-          <CoinType />
+          <ButtonBetActionStyled variant="contained" fullWidth onClick={decrementAmount}>
+            -
+          </ButtonBetActionStyled>
         </Grid>
-        <Grid size={{ xs: 9, sm: 6 }}>
+        <Grid size={{ xs: 6, sm: 8 }}>
           <Controller
             name="amount"
             control={control}
@@ -64,8 +82,10 @@ export const BetForm = () => {
             )}
           />
         </Grid>
-        <Grid size={{ xs: 12, sm: 4 }}>
-          <DisplayTextStyled>{`${t('betPage.coinBalance')} ${balance}`}</DisplayTextStyled>
+        <Grid size={{ xs: 3, sm: 2 }}>
+          <ButtonBetActionStyled variant="contained" fullWidth onClick={incrementAmount}>
+            +
+          </ButtonBetActionStyled>
         </Grid>
         <Grid size={12}>
           <Button type="submit" variant="contained" fullWidth loading={isMutating}>
