@@ -28,6 +28,9 @@ export const BetForm = () => {
     defaultValues: {
       amount: 0,
     },
+    context: {
+      balance: balance,
+    },
   });
 
   const onSubmit = async (data: BetFormInputs) => {
