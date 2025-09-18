@@ -66,7 +66,6 @@ export const TableListMyBets = () => {
 
   // @TODO create loading skeletion
   // @TODO create empty list feedback
-  // @TODO create error feedback
 
   return (
     <Box sx={{ width: '100%', overflowX: 'auto', my: 4 }}>
