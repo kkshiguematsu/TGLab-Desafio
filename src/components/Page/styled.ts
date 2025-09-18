@@ -21,6 +21,14 @@ export const MainBox = styled('div')<MainBoxProps>(
   }),
 );
 
-export const ContentPage = styled('div')({
-  maxWidth: 1200,
-});
+export const ContentPage = styled('div')(({ theme }) => ({
+  overflowX: 'auto',
+  margin: '0 auto',
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
+  [theme.breakpoints.up('md')]: {
+    maxWidth: 1200,
+    paddingLeft: theme.spacing(3),
+    paddingRight: theme.spacing(3),
+  },
+}));

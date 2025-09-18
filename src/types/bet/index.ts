@@ -8,3 +8,13 @@ export type BetResponseType = {
   balance: number;
   winAmount: number;
 };
+
+export type CancelBetType = {
+  id: string;
+};
+
+export type CancelBetResponseType = {
+  transactionId: string;
+  balance: number;
+  currency: string;
+};

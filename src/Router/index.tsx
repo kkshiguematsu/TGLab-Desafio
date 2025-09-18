@@ -2,6 +2,8 @@ import { LoginPage } from '../pages/LoginPage';
 import { BetPage } from '../pages/BetPage';
 import { PrivateRoute } from './PrivateRoute';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { MyTransactionsPage } from '../pages/MyTransactionsPage';
+import { MyBetsPage } from '../pages/MyBetsPage';
 
 const router = createBrowserRouter([
   {
@@ -11,7 +13,11 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <PrivateRoute />,
-    children: [{ path: '/bet', element: <BetPage /> }],
+    children: [
+      { path: '/bet', element: <BetPage /> },
+      { path: '/my-bets', element: <MyBetsPage /> },
+      { path: '/my-transactions', element: <MyTransactionsPage /> },
+    ],
   },
 ]);
 

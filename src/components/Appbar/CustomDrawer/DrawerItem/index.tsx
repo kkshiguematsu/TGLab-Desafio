@@ -1,15 +1,10 @@
-import { styled } from '@mui/material';
+import { DrawerItemStyled } from './styled';
 
 interface DrawerItemProps {
   text: string;
+  navigate: () => void;
 }
 
-export const DrawerItemStyled = styled('div')(({ theme }) => ({
-  padding: theme.spacing(1, 0),
-  borderBottom: `1px solid ${theme.palette.divider}`,
-  cursor: 'pointer',
-}));
-
-export const DrawerItem = ({ text }: DrawerItemProps) => {
-  return <DrawerItemStyled>{text}</DrawerItemStyled>;
+export const DrawerItem = ({ text, navigate }: DrawerItemProps) => {
+  return <DrawerItemStyled onClick={navigate}>{text}</DrawerItemStyled>;
 };

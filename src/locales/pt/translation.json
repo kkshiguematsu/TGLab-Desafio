@@ -21,5 +21,55 @@
     "button": "Apostar",
     "betWinLabel": "Parabéns! Você ganhou ",
     "coinBalance": "Saldo: "
+  },
+  "drawerItem": {
+    "drawerBet": "Apostar",
+    "drawerMyBets": "Minhas Apostas",
+    "drawerTransactions": "Transações"
+  },
+  "myBetsPage": {
+    "title": "Minhas Apostas",
+    "tableColumns": {
+      "value": "Valor",
+      "date": "Data/Hora",
+      "status": "Situação",
+      "reward": "Prêmio",
+      "actionLabel": "Cancelar Aposta",
+      "actions": "Ações"
+    },
+    "cancelModal": {
+      "title": "Cancelar Aposta",
+      "body": "Tem certeza que deseja cancelar a aposta ?",
+      "backButton": "Voltar",
+      "cancelButton": "Cancelar Aposta"
+    },
+    "filter": {
+      "filterId": "Filtrar por ID",
+      "filterStatus": {
+        "label": "Filtrar por Situação",
+        "allItem": "Todos",
+        "winItem": "Ganha",
+        "lostItem": "Perdida",
+        "canceledItem": "Cancelada"
+      }
+    }
+  },
+  "myTransactionssPage": {
+    "title": "Minhas Transações",
+    "tableColumns": {
+      "value": "Valor",
+      "date": "Data/Hora",
+      "type": "Tipo"
+    },
+    "filter": {
+      "filterId": "Filtrar por ID",
+      "filterType": {
+        "label": "Filtrar por Tipo",
+        "allItem": "Todos",
+        "betItem": "Apostado",
+        "winItem": "Ganha",
+        "cancelItem": "Cancelada"
+      }
+    }
   }
 }

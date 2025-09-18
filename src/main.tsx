@@ -15,7 +15,6 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <AuthProvider>
         <ThemeProvider>
-          <CustomAppBar />
           <Router />
         </ThemeProvider>
       </AuthProvider>
