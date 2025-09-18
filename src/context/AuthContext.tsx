@@ -5,6 +5,7 @@ import { loginService, registerService } from '../services/authService';
 import { setBalance } from '../store/user/userBalance';
 import type { AppDispatch } from '../store/store';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
   user: string | null;
@@ -43,8 +44,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setToken(token);
 
       localStorage.setItem('authToken', token);
-    } catch (error) {
-      setError('Login failed');
+    } catch (error: any) {
+      setError(error.response.data.message);
+      throw new Error(error);
     } finally {
       setIsLoading(false);
     }
