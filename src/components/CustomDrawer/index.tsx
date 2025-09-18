@@ -12,7 +12,7 @@ interface CustomDrawerProps {
 }
 
 export const CustomDrawer = ({ open, toggleDrawer }: CustomDrawerProps) => {
-  const { isAuthenticated } = useAuth();
+  const { logout } = useAuth();
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -31,6 +31,11 @@ export const CustomDrawer = ({ open, toggleDrawer }: CustomDrawerProps) => {
     },
   ];
 
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
     <DrawerStyled open={open} onClose={toggleDrawer(false)}>
       <BoxStyled flexGrow={1}>
@@ -41,6 +46,7 @@ export const CustomDrawer = ({ open, toggleDrawer }: CustomDrawerProps) => {
       <BoxStyled>
         <LanguageSelect />
         <ThemeModeSelector />
+        <DrawerItem text={'Logout'} navigate={handleLogout} />
       </BoxStyled>
     </DrawerStyled>
   );
