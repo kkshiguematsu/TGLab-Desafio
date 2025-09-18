@@ -38,7 +38,7 @@ export const LoginForm = ({ onOpenRegister }: LoginFormProps) => {
       await login(data);
       navigate('/bet');
     } catch (err) {
-      console.error('Falha no login a partir do componente');
+      console.error(err);
     }
   };
 
